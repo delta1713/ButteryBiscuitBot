@@ -138,7 +138,7 @@ async def reloadext(context, *args):
 
 # ----------------- Start the bot -----------------------
 
-startup_extensions = ["rng", "tesseract", "pictures", "admin", "general", "listeners", 'songs', 'tts']
+startup_extensions = ["rng", "tesseract", "pictures", "admin", "general", "listeners", 'songs']
 
 if __name__ == "__main__":
     for extension in startup_extensions:

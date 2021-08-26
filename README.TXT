@@ -17,4 +17,14 @@ pip install python-dotenv
 ---------------------------------
 
 To run - navigate to bot's directory in cmd, then enter:
-python ButteryBiscuitBot.py
+python main.py
+
+
+The main.py file is always up and running, it loads various other cogs from different files
+You can hot load/unload extensions with the !load <extension> or !unload <extension> or !reload <extension> commands
+!restart will restart the whole bot
+
+All other commands are inside extensions
+The list of extensions which are auto loaded/unloaded is inside main.py (maybe i should move that out so it can be edited without requiring a restart oh well)
+
+Theoretically will add more to this later

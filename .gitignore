@@ -1,7 +1,8 @@
 # BBB ignore directories
 Music/
 OLDCODE/
-
+ButteryBiscuitBot17.py
+ButteryBiscuitBot18.py
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
