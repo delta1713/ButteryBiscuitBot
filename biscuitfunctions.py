@@ -5,14 +5,16 @@ quaidlist = [97172418258280448, 101462910349381632, 97171583524691968, 971714215
 
 quaidlinglist = [280833155148021773, 104333643404546048]
 
+root = "/gitbot/ButteryBiscuitBot/"
+
 def readcsvtodict(filename):
-    filepath = f"/pythbot/Buttery_Biscuit_Bot/{filename}.csv"
+    filepath = root + f"{filename}.csv"
     with open(f'{filepath}', mode='r') as infile:
         dictionary = dict(csv.reader(infile))
     return dictionary
     
 def writedictcsv(dictionary, filename):
-    filepath = f"/pythbot/Buttery_Biscuit_Bot/{filename}.csv"
+    filepath = root + f"{filename}.csv"
     w = csv.writer(open(filepath, "w"))
     for key, val in dictionary.items():
         w.writerow([key, val])
@@ -26,13 +28,13 @@ def authname(context):
 
 
 def writedictjson(dictionary, filename):
-    filepath = f"/pythbot/Buttery_Biscuit_Bot/{filename}.csv"
+    filepath = root + f"{filename}.csv"
     with open(filepath, 'w') as fp:
         json.dump(dictionary, fp)
         
 
 def readdictjson(filename):
-    filepath = f"/pythbot/Buttery_Biscuit_Bot/{filename}.csv"
+    filepath = root + f"{filename}.csv"
     with open(filepath) as json_file:
         load = json.load(json_file)
     return dict(load)

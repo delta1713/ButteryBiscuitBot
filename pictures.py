@@ -2,6 +2,8 @@ from discord.ext import commands
 import discord
 import random
 
+root = "/gitbot/ButteryBiscuitBot/pictures/"
+
 class pictures(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -15,7 +17,7 @@ class pictures(commands.Cog):
         """
         ChrisPenis
         """
-        await context.send(file=discord.File('/pythbot/Buttery_Biscuit_Bot/pictures/chrispenis.jpg'))
+        await context.send(file=discord.File(root + 'chrispenis.jpg'))
         # this sends the file directly to discord, there is a way to do so with filelike objects
         # (dunno what those are) but I couldn't get it to work
     
@@ -29,7 +31,7 @@ class pictures(commands.Cog):
         """
         biscuitfaces
         """
-        await context.send(file=discord.File('/pythbot/Buttery_Biscuit_Bot/pictures/biscuitface.jpg'))
+        await context.send(file=discord.File('biscuitface.jpg'))
     
     @commands.command(
         name='pepperoni',
@@ -41,7 +43,20 @@ class pictures(commands.Cog):
         """
         pepperoni
         """
-        await context.send(file=discord.File('/pythbot/Buttery_Biscuit_Bot/pictures/pepperoni.png'))
+        await context.send(file=discord.File(root + 'pepperoni.png'))
+    
+    
+    @commands.command(
+        name='stream',
+        aliases=[],
+        description='stream it for him',
+        pass_context=True,
+    )
+    async def stream(self, context):
+        """
+        stream
+        """
+        await context.send(file=discord.File(root + 'stream.png'))
     
     
     @commands.command(
@@ -54,7 +69,7 @@ class pictures(commands.Cog):
         """
         trongle man
         """
-        await context.send(file=discord.File('/pythbot/Buttery_Biscuit_Bot/pictures/trongle.jpg'))
+        await context.send(file=discord.File(root + 'trongle.jpg'))
         
     
     @commands.command(
@@ -67,7 +82,7 @@ class pictures(commands.Cog):
         """
         meta trongle
         """
-        await context.send(file=discord.File('/pythbot/Buttery_Biscuit_Bot/pictures/metatrongle.png'))
+        await context.send(file=discord.File(root + 'metatrongle.png'))
         
     
     @commands.command(
@@ -80,7 +95,7 @@ class pictures(commands.Cog):
         """
         hell yea dawg
         """
-        hydlist = ['/pythbot/Buttery_Biscuit_Bot/pictures/hyd.jpg', '/pythbot/Buttery_Biscuit_Bot/pictures/hyd2.jpg', '/pythbot/Buttery_Biscuit_Bot/pictures/hyd3.jpg', '/pythbot/Buttery_Biscuit_Bot/pictures/hyd4.jpg', '/pythbot/Buttery_Biscuit_Bot/pictures/hyd5.jpg', '/pythbot/Buttery_Biscuit_Bot/pictures/hyd6.jpg', '/pythbot/Buttery_Biscuit_Bot/pictures/hyd7.jpg', '/pythbot/Buttery_Biscuit_Bot/pictures/hyd8.jpg']
+        hydlist = [root + 'hyd.jpg', root + 'hyd2.jpg', root + 'hyd3.jpg', root + 'hyd4.jpg', root + 'hyd5.jpg', root + 'hyd6.jpg', root + 'hyd7.jpg', root + 'hyd8.jpg']
         rnum = random.randint(0,len(hydlist)-1)
         await context.send(file=discord.File(hydlist[rnum]))
         
@@ -90,7 +105,7 @@ class pictures(commands.Cog):
         description='hell yeaaaaa duck',
         pass_context=True)
     async def hyduck(self, context):
-        await context.send(file=discord.File('/pythbot/Buttery_Biscuit_Bot/pictures/hyduck1.jpg'))
+        await context.send(file=discord.File(root + 'hyduck1.jpg'))
 
 def setup(bot):
     bot.add_cog(pictures(bot))

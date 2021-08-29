@@ -36,7 +36,7 @@ class tesseract(commands.Cog, command_attrs=dict(hidden=True)):
 #        print("context dir is:", dir(context))
 #        print("context.channel is: ", context.channel)
 #        print("context.channel dir is:", dir(context.channel))
-#        print("context.author is: ", context.author)
+        print("context.author is: ", context.author)
 #        print("context.message is: ", context.message)
 #        print("context message dir is: ", dir(context.message))
 #        print("context.guild is: ", context.guild)
@@ -44,7 +44,7 @@ class tesseract(commands.Cog, command_attrs=dict(hidden=True)):
 #        print("context.guild.channels is: ", context.guild.channels)
 #        print("context.guild.channels dir is: ", dir(context.guild.channels))
 #        
-#        print("context.author.nick is: ", context.author.nick)
+        print("context.author.nick is: ", context.author.nick)
 #        print("context.author dir:", dir(context.author))
 #        print("context.author.roles is: ", context.author.roles)
 #        print("context.author.roles dir is: ", dir(context.author.roles))

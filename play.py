@@ -61,11 +61,7 @@ class play(commands.Cog):
                 song = songdict[aliasdict[args[0]]]
                 await playsong(voice_connection, song)
             else:
-#                songdict = bf.readcsvtodict("mastersonglist")
-#                if args[0] in songdict:
-#                    song = songdict[args[0]]
-#                    await playsong(voice_connection, song)
-#                else:
+
                 await context.send("Play what? Uhh... Why don't you try again. (Try !play for a list of songs)")
 
 def setup(bot):

@@ -5,21 +5,23 @@ import discord
 import asyncio
 import biscuitfunctions as bf
 
+root = "/gitbot/ButteryBiscuitBot/"
 
 fromrestart = bf.readcsvtodict('restart')
 
 print(fromrestart)
 
-introdict = {97172418258280448 : {'path' : "/pythbot/Buttery_Biscuit_Bot/Music/tessboyos.mp3", 'volume' : "4", "user" : "tesseract"},
-101462910349381632 : {'path' : "/pythbot/Buttery_Biscuit_Bot/Music/welcome.mp3", 'volume' : "2", "user" : "gonnjeppi"},
-97171583524691968 : {'path' : "/pythbot/Buttery_Biscuit_Bot/Music/queen.mp3", 'volume' : "0.5", "user" : "attolias"},
-97171421553233920 : {'path' : "/pythbot/Buttery_Biscuit_Bot/Music/Jarrier.mp3", 'volume' : "1.5", "user" : "RedJar"},
-98542595751288832 : {'path' : "/pythbot/Buttery_Biscuit_Bot/welcomebackpilot.mp3", 'volume' : "2", "user" : "formyndare"},
-97171512729014272 : {'path' : "/pythbot/Buttery_Biscuit_Bot/Music/aaron.mp3", 'volume' : ".75", "user" : "quaid"},
-280833155148021773 : {'path' : "/pythbot/Buttery_Biscuit_Bot/Music/thelarch.mp3", 'volume' : "6", "user" : "thelarch"},
-100412818922168320 : {'path' : "/pythbot/Buttery_Biscuit_Bot/Music/bobbyintro.mp3", 'volume' : "1", "user" : "mdman2014"}
+introdict = {97172418258280448 : {'path' : root + "tessboyos.mp3", 'volume' : "4", "user" : "tesseract"},
+101462910349381632 : {'path' : root + "welcome.mp3", 'volume' : "2", "user" : "gonnjeppi"},
+97171583524691968 : {'path' : root + "queen.mp3", 'volume' : "0.5", "user" : "attolias"},
+97171421553233920 : {'path' : root + "Jarrier.mp3", 'volume' : "1.5", "user" : "RedJar"},
+98542595751288832 : {'path' : root + "welcomebackpilot.mp3", 'volume' : "2", "user" : "formyndare"},
+97171512729014272 : {'path' : root + "aaron.mp3", 'volume' : ".75", "user" : "quaid"},
+280833155148021773 : {'path' : root + "thelarch.mp3", 'volume' : "6", "user" : "thelarch"},
+100412818922168320 : {'path' : root + "bobbyintro.mp3", 'volume' : "1", "user" : "mdman2014"},
+197852324088119307 : {'path' : root + "jake.mp3", 'volume' : "1", "user" : "algebraicmusicj"}
 }
-# "/pythbot/Buttery_Biscuit_Bot/Music/northstarprime.mp3" OLd tesseract intro
+# root + "northstarprime.mp3" OLd tesseract intro
 
 class listener(commands.Cog):
     def __init__(self, bot):
@@ -56,7 +58,7 @@ class listener(commands.Cog):
         'taco' : "Seriously Jacob, tacos are not sandwiches",
         'hotdog' : "Hotdogs are not a sandwich",
         'discworld' : "GNU Sir Terry Pratchett",
-        'thelarch' : {'path' : '/pythbot/Buttery_Biscuit_Bot/pictures/lucashorrific.png'}
+        'thelarch' : {'path' : root + '/pictures/lucashorrific.png'}
         }
         lowermessage = message.content.lower()
         for key in callresponsedict:

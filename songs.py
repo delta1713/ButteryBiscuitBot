@@ -13,7 +13,7 @@ import random
 from pydub import AudioSegment
 from collections import OrderedDict
 
-
+root = "/gitbot/ButteryBiscuitBot/"
 
 reservednames = ['random', 'all', 'admin', 'delete', 'tesseract', 'delta1713', 'jon', 'jonathan', 'Jon', 'Jonathan', 'Jono', 'jono', 'Tesseract', 'song', 'Songs']
 
@@ -319,7 +319,6 @@ class acquisition(commands.Cog):
         isyoinking = True
         print("length args: ", len(args))
         if len(args) == 0:
-            print('1')
             await context.send("Yo, I need something to acquire dumbass")
             isyoinking = False
             return
@@ -327,19 +326,16 @@ class acquisition(commands.Cog):
             attach = True
             fromurl = False
             trim = False
-            print('2')
         elif len(context.message.attachments) == 0 and len(args) == 2:
             fromurl = True
             attach = False
             trim = False
-            print('3')
         elif len(args) == 4:
             trim = True
             attach = False
             fromurl = True
             startsec = int(args[2])
             endsec = int(args[3])
-            print('4')
         else:
             await context.send(f"Uhh, what was that {bf.authname(context)}?")
             isyoinking = False
@@ -349,7 +345,7 @@ class acquisition(commands.Cog):
                 filename = args[0]
                 if not await checksongname(context, filename):
                     return
-                filelocation = '/pythbot/Buttery_Biscuit_Bot/Music/' + filename + '.mp3'
+                filelocation = root + '/Music/' + filename + '.mp3'
                 await context.message.attachments[0].save(filelocation)
                 songmp3 = MP3(filelocation)
                 duration = songmp3.info.length
@@ -360,7 +356,7 @@ class acquisition(commands.Cog):
                 return
             elif fromurl == True and trim == False:
                 filename = args[0]
-                filelocation = '/pythbot/Buttery_Biscuit_Bot/Music/' + filename + '.mp3'
+                filelocation = root + '/Music/' + filename + '.mp3'
                 url = args[1]
                 if not await checksongname(context, filename):
                     isyoinking = False
@@ -377,7 +373,7 @@ class acquisition(commands.Cog):
                 return
             elif fromurl == True and trim == True:
                 filename = args[0]
-                filelocation = '/pythbot/Buttery_Biscuit_Bot/Music/' + filename + '.mp3'
+                filelocation = root + '/Music/' + filename + '.mp3'
                 url = args[1]
                 if not await checksongname(context, filename):
                     isyoinking = False
@@ -386,7 +382,7 @@ class acquisition(commands.Cog):
                 if duration == 999:
                     isyoinking = False
                     return
-                tempfile = '/pythbot/Buttery_Biscuit_Bot/Music/temp.mp3'
+                tempfile = root + '/Music/temp.mp3'
                 if os.path.isfile(tempfile):
                     try:
                         os.remove(tempfile)
@@ -455,8 +451,6 @@ class songs(commands.Cog):
             results = []
             for songentry in songdict:
                 song = songdict[songentry]
-                print("song: ", song)
-                print("x: ", x)
                 if x in song['topname']:
                     results.append(song['topname'])
                 elif any(x in s for s in song['aliases']):
@@ -544,8 +538,8 @@ class songs(commands.Cog):
         if not args:
             await context.send("Yo, you gotta give me something to go on here, looking through this ancient history is hard", delete_after=60)
         filename = args[0]
-        filelocation = '/pythbot/Buttery_Biscuit_Bot/Music/' + filename + '.mp3'
-        filelocation2 = '/pythbot/Buttery_Biscuit_Bot/Music/aoe2/' + filename + '.mp3'
+        filelocation = root + '/Music/' + filename + '.mp3'
+        filelocation2 = root + '/Music/aoe2/' + filename + '.mp3'
         if filename in songdict or filename in aliasdict:
             await context.send(f"Yo, I already know that one, just do !play {filename}", delete_after=60)
             await context.message.delete()
@@ -580,27 +574,7 @@ class songs(commands.Cog):
         await context.send(f"""Oh, found a bit more:\n{part2}""")
         beautifulOrderedDictionary = OrderedDict(sorted(songdict.items(), key=lambda x: x[1]['playcount'], reverse=True))
 
-"""            for key in osongdict:
-                namestring = namestring + f"{key}\n"
-                countstring = countstring + f"{osongdict[key]['playcount']}\n"
-                if i < (totlen/4) - 1:
-                    i += 1
-                else:
-                    print("break", i)
-                    nslist.append(namestring)
-                    cslist.append(countstring)
-                    print("nslist: ", nslist)
-                    print("cslist: ", cslist)
-                    namestring = ""
-                    countstring = ""
-                    print("ns: ", namestring, "cs: ", countstring)
-                    i = 0
-                    
 
-            for j in range(0, 4):
-                dembed.add_field(name=f"Songs ({j}/4)", value=nslist[j], inline = True)
-                dembed.add_field(name=f"Playcounts {j}/4", value=cslist[j], inline = True)
-"""
 
 def setup(bot):
     bot.add_cog(playsongs(bot))
